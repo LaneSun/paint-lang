@@ -24,4 +24,5 @@ export const packer = {
     "Token": elems => [elems.join('')],
     "Number": elems => [Number.parseFloat(elems.join(''))],
     "Comment": elems => [],
+    "Root": elems => elems.filter(e => e !== ';'),
 };

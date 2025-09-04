@@ -1,6 +1,7 @@
 Root{
-    |Command|
-    |Define|
+    |Command ~";"?|
+    |Define ~";"?|
+    |Element ~";"?|
     |Whitespace|
     |Comment|
 
@@ -18,10 +19,10 @@ Root{
             |Token|
         }
         FullDefine {
-            |Token "(" ~Args ~")" ~"=" ~Expression ~";"|
+            |Token "(" ~Args ~")" ~"=" ~Expression|
         }
         PartDefine {
-            |Token ~"=" ~Expression ~";"|
+            |Token ~"=" ~Expression|
         }
     }
 

@@ -93,6 +93,9 @@ const ACTIONS = {
             return res;
         }
     },
+    "print": (value) => {
+        alert(JSON.stringify(value, null, 4).slice(0, 4000));
+    },
     "!": (a) => !a ? 1 : 0,
     "+": (a, b = 0) => a + b,
     "-": (a, b) => b === undefined ? -a : a - b,
@@ -139,10 +142,14 @@ await init_converter();
 const rule = await load_cmrule("./rules/paint-lang");
 
 function run_editor() {
-    const source = editor.getValue();
-    const res = parser(rule, source.split(''));
-    console.log(res);
-    run_list(res);
+    try {
+        const source = editor.getValue();
+        const res = parser(rule, source.split(''));
+        console.log(res);
+        run_list(res);
+    } catch(e) {
+        alert("Error: " + e.toString());
+    }
 }
 window.run_editor = run_editor;
 

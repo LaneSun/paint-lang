@@ -98,24 +98,26 @@
       <textarea id="code">// Tree
 
 f(x y agl l) = [[x + 0.5 y] [x + 0.5 + l * @cos(agl), y + l * @sin(agl)]];
-m(i x y agl l) = #if i < 24
-         [f(x y agl l)]
-         # m(i + 2, x + l * @cos(agl), y + l * @sin(agl), agl - 14 * @pi / 30, l * 0.54)
-         # m(i + 1, x + l * @cos(agl), y + l * @sin(agl), agl + @pi / 15, l * 0.8)
-         [];
+m(i x y agl l) =
+    #if i < 24
+        [f(x y agl l)]
+          # m(i + 2, x + l * @cos(agl), y + l * @sin(agl), agl - 14 * @pi / 30, l * 0.54)
+          # m(i + 1, x + l * @cos(agl), y + l * @sin(agl), agl + @pi / 15, l * 0.8)
+        [];
 
 lines = m(0 0 0 @pi/2 0.2);
 
-@clear
-@line(lines)
+@clear;
+@line(lines);
 
 
 // Simple
 
 s(x y) = [.5 + @cos(x) * y, .5 + @sin(x) * y];
-m(s_x e_x r v) = #if (s_x <= e_x)
-                [s(s_x, r + @cos(s_x * 8) / v)] # m(s_x + 0.01, e_x)
-             	[];
+m(s_x e_x r v) =
+    #if (s_x <= e_x)
+        [s(s_x, r + @cos(s_x * 8) / v)] # m(s_x + 0.01, e_x)
+        [];
 
 // @dot(m(.0 @tau 0.0625 16) # m(.0 @tau 0.25 16) # m(.0 @tau 0.35 32))
 </textarea>
